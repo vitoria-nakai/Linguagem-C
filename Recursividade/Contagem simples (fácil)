@@ -1,0 +1,29 @@
+/*
+Escreva uma função recursiva "void contagem_regressiva(int n)" que imprima os
+números de 'n' até 1, em ordem decrescente.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+void contagem_regressiva(int n){
+    if(n < 1) return;
+    else {
+        printf("%d\t", n);
+        contagem_regressiva(n - 1);
+    }
+}
+
+int main(){
+    int n;
+    
+    printf("Digite um número positivo: ");
+    scanf("%d", &n);
+    
+    if(n <= 0){
+        printf("Nenhum número positivo detectado. Fim de operação.");
+        return 0;
+    }
+    contagem_regressiva(n);
+    return 0;
+}
