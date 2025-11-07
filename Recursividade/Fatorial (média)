@@ -1,0 +1,27 @@
+/*
+Escreva uma função recursiva em C chamada "int fatorial(int n)" que receba
+um inteiro não negativo 'n' e retorne o seu fatorial (n!).
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int fatorial(int n){
+    if(n == 1) return 1;
+    else return n * fatorial(n - 1);
+}
+
+int main(){
+    int n;
+    
+    printf("Digite um número positivo: ");
+    scanf("%d", &n);
+    
+    if(n <= 0){
+        printf("Nenhum número positivo detectado. Fim de operação.");
+        return 0;
+    }
+    
+    printf("O fatorial de %d! é %d.", n, fatorial(n));
+    return 0;
+}
