@@ -1,0 +1,39 @@
+/*
+Escreva uma função recursiva em C que inverta uma string in-place (ou seja,
+modificando a própria string original, sem criar uma cópia). A função
+deve receber um ponteiro para a string e os índices de início e fim que 
+ela deve operar.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+void inverterString(char *str, int inicio, int fim){
+    char med;
+    if(inicio > fim) return;
+    else{
+        med = str[inicio];
+        str[inicio] = str[fim];
+        str[fim] = med;
+        inverterString(str, inicio + 1, fim - 1);
+    }
+}
+
+int main(){
+    char str[100];
+    int inicio = 0;
+    int fim;
+    
+    printf("Digite uma string: ");
+    
+    fgets(str, 100, stdin);
+    
+    str[strcspn(str, "\n")] = '\0';
+    
+    fim = strlen(str) - 1;
+    
+    inverterString(str, inicio, fim);
+    
+    printf("A string invertida é %s", str);
+}
