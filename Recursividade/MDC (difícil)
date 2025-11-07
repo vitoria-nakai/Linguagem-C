@@ -1,0 +1,28 @@
+/*
+Escreva uma função recursiva em C que implemente o Algoritmo de Euclides para
+encontrar o Máximo Divisor Comum de dois números inteiros não negativos, a e b.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int mdc(int a, int b){
+    int divisor = 1;
+    
+    if(a == 0) return b;
+    else if(b == 0) return a;
+    else return mdc(b, a % b);
+}
+
+int main(){
+    int a, b;
+    
+    printf("---------- ALGORITMO DE EUCLIDES ----------\n\n");
+    printf("Insira um número não negativo: ");
+    scanf("%d", &a);
+    printf("Insira outro número não negativo: ");
+    scanf("%d", &b);
+    
+    printf("O Máximo Divisor Comum entre esses dois números é o %d", mdc(a, b));
+    return 0;
+}
