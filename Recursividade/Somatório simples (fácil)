@@ -1,0 +1,26 @@
+/*
+Escreva uma função recursiva em C chamada "int soma_ate_n(int n)" que 
+calcule a soma de todos os inteiros positivos de 1 até 'n'.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int soma_ate_n(int n){
+    if(n == 1) return 1;
+    else return n + soma_ate_n(n - 1);
+}
+
+int main(){
+    int n;
+    
+    printf("Digite um número positivo: ");
+    scanf("%d", &n);
+    
+    if(n <= 0){
+        printf("Nenhum número positivo detectado. Fim de operação.");
+        return 0;
+    }
+    printf("A soma de todos os inteiros positivos de 1 até %d é %d", n, soma_ate_n(n));
+    return 0;
+}
