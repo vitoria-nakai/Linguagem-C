@@ -1,0 +1,62 @@
+/*
+Ordenar um array de pontuações de um jogo usando o QuickSort e, em seguida,
+exibir as 3 maiores pontuações em ordem decrescente.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+void trocar(int * a, int * b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int partition(int arr[], int baixo, int alto){
+    int pivo = arr[alto];
+    int i = baixo - 1;
+    for(int j = baixo; j < alto; j++){
+        if(arr[j] < pivo){
+            i = i + 1;
+            trocar(&arr[j], &arr[i]);
+        }
+    }
+    
+    trocar(&arr[i + 1], &arr[alto]);
+    
+    return (i + 1);
+}
+
+void quickSort(int arr[], int baixo, int alto){ //"Gerente"
+    if(baixo >= alto) return; //caso base: quando está pronto
+    int pi = partition(arr, baixo, alto); //Chama a "funcionária"
+    quickSort(arr, baixo, pi - 1); //Particiona o subgrupo inferior
+    quickSort(arr, pi + 1, alto); //Particiona o subgrupo superior
+}
+
+void imprimirArray(int arr[], int tamanho){
+    for(int i = 0; i < tamanho; i++){
+        printf("%d", arr[i]);
+    }
+    printf("\n");
+}
+
+int main(){
+    int pontuacoes[] = {85, 40, 120, 55, 200, 75, 150, 95};
+    int n = sizeof(pontuacoes) / sizeof(pontuacoes[0]);
+    
+    printf("Array original: \n");
+    imprimirArray(pontuacoes, n);
+    
+    quickSort(pontuacoes, 0, n - 1);
+    
+    printf("\nArray ordenado: \n");
+    imprimirArray(pontuacoes, n);
+    
+    printf("\nAs 3 maiores pontuações são: \n");
+    printf("1°: %d\n", pontuacoes[n - 1]);
+    printf("2°: %d\n", pontuacoes[n - 2]);
+    printf("3°: %d\n", pontuacoes[n - 3]);
+    
+    return 0;
+}
